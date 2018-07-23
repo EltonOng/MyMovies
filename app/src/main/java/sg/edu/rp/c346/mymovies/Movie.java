@@ -1,12 +1,13 @@
 package sg.edu.rp.c346.mymovies;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * Created by 16043971 on 23/7/2018.
  */
 
-public class Movie {
+public class Movie implements Serializable {
     private String title;
     private String year;
     private String rated;
@@ -99,15 +100,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", year='" + year + '\'' +
-                ", rated='" + rated + '\'' +
-                ", genre='" + genre + '\'' +
-                ", watched_on=" + watched_on +
-                ", in_theatre='" + in_theatre + '\'' +
-                ", description='" + description + '\'' +
-                ", rating=" + rating +
-                '}';
+        return title + "," + year + "," + rated + "," + genre + "," + getDateString() + "," +
+                in_theatre + "," + description + "," + rating;
     }
 }

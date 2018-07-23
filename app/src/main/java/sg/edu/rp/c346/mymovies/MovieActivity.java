@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MovieActivity extends AppCompatActivity {
 
     ImageView ivRated;
@@ -34,44 +36,41 @@ public class MovieActivity extends AppCompatActivity {
         rbRating = findViewById(R.id.ratingBar);
 
         Intent intentReceived = getIntent();
-        String title = intentReceived.getStringExtra("title");
-        String year = intentReceived.getStringExtra("year");
-        String genre = intentReceived.getStringExtra("genre");
-        String description = intentReceived.getStringExtra("description");
-        String theatre = intentReceived.getStringExtra("theatre");
-        String watched = intentReceived.getStringExtra("date");
-        String rated = intentReceived.getStringExtra("rated");
-        int rating = intentReceived.getIntExtra("rating",0);
 
-        tvTitle.setText(title);
-        tvYear.setText(year + " - ");
-        tvGenre.setText(genre);
-        tvDescription.setText(description);
-        tvWatched.setText("Watch on: " + watched);
-        tvtheatre.setText("In Theatre: " + theatre);
+
+        Movie mList = (Movie) intentReceived.getSerializableExtra("list");
+
+        tvTitle.setText(mList.getTitle());
+        tvYear.setText(mList.getYear() + " - ");
+        tvGenre.setText(mList.getGenre());
+        tvDescription.setText(mList.getDescription());
+        tvWatched.setText("Watch on: " + mList.getDateString());
+        tvtheatre.setText("In Theatre: " + mList.getIn_theatre());
 
         rbRating.setNumStars(5);
-        rbRating.setRating(rating);
+        rbRating.setRating(mList.getRating());
         rbRating.setIsIndicator(true);
 
-        if(rated.equals("g")){
+
+        if(mList.getRated().equals("g")){
             ivRated.setImageResource(R.drawable.rating_g);
         }
-        else if(rated.equals("pg")){
+        else if(mList.getRated().equals("pg")){
             ivRated.setImageResource(R.drawable.rating_pg);
         }
-        else if(rated.equals("pg13")){
+        else if(mList.getRated().equals("pg13")){
             ivRated.setImageResource(R.drawable.rating_pg13);
         }
-        else if(rated.equals("nc16")){
+        else if(mList.getRated().equals("nc16")){
             ivRated.setImageResource(R.drawable.rating_nc16);
         }
-        else if(rated.equals("m18")){
+        else if(mList.getRated().equals("m18")){
             ivRated.setImageResource(R.drawable.rating_m18);
         }
-        else if(rated.equals("r21")){
+        else if(mList.getRated().equals("r21")){
             ivRated.setImageResource(R.drawable.rating_r21);
         }
+
 
 
 

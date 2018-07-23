@@ -1,6 +1,7 @@
 package sg.edu.rp.c346.mymovies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -28,6 +29,8 @@ public class CustomAdapter extends ArrayAdapter{
         parent_context = context;
         layout_id = resource;
         movieList = objects;
+
+
     }
 
     @NonNull

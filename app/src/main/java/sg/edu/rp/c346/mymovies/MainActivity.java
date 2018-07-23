@@ -13,7 +13,6 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     ListView lvMovie;
-    int viewId;
 
     ArrayList<Movie> alMovie;
     CustomAdapter caMovie;
@@ -45,14 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 Movie currentItem = alMovie.get(i);
                 Intent intent = new Intent(getBaseContext(), MovieActivity.class);
 
-                intent.putExtra("title",currentItem.getTitle());
-                intent.putExtra("year",currentItem.getTitle());
-                intent.putExtra("rated",currentItem.getRated());
-                intent.putExtra("genre",currentItem.getGenre());
-                intent.putExtra("date",currentItem.getDateString());
-                intent.putExtra("theatre",currentItem.getIn_theatre());
-                intent.putExtra("description",currentItem.getDescription());
-                intent.putExtra("rating",currentItem.getRating());
+                intent.putExtra("list",currentItem);
                 startActivity(intent);
             }
         });
